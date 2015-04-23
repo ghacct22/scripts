@@ -8,26 +8,24 @@ line='==========================================================================
 # example branches
 cti='feature/mingle-17304-open-cti-ui'
 
+co_output(){
+    echo $line
+    echo "$1"
+    echo $line
+}
+
 # git checkout command
 co(){
-    echo $line
-    echo "Checking out $1"
-    echo $line
+    co_output "Checking out $1"
     git checkout $1
 
-    echo $line
-    echo "Running git pull"
-    echo $line
+    co_output "Running git pull"
     git pull
 
-    echo $line
-    echo "Running composer install"
-    echo $line
+    co_output "Running composer install"
     composer install
 
-    echo $line
-    echo "Running submodule update"
-    echo $line
+    co_output "Running submodule update"
     git submodule update
     git st
 }
@@ -36,10 +34,17 @@ co(){
 deploy(){
     co $1
 
-    echo $line
-    echo "Running ant sfDeploy"
-    echo $line
+    co_output "Running ant sfDeploy"
     ant sfDeploy
+}
+
+description_text(){
+    echo $line
+    echo "Finished context switch"
+    echo "SalesTeamAutomation :: $sta_repo"
+    echo "Querybuilder        :: $atom_repo"
+    echo "Atom                :: $qb_repo"
+    echo $line
 }
 
 # run them all
@@ -49,29 +54,27 @@ context(){
     qb_repo=$2
     atom_repo=$3
 
-    echo $line
-    echo "Starting context switch"
-    echo "SalesTeamAutomation :: $sta_repo"
-    echo "Querybuilder        :: $sta_repo"
-    echo "Atom                :: $sta_repo"
-    echo $line
+    description_text
 
+    co_output "STA: Changing directory to $sta"
     cd $sta
     co $sta_repo
     
+    co_output "Atom: Changing directory to $atom"
     cd $atom
     co $atom_repo
 
-    cd $qb
-    deploy $qb_repo
+    co_output "QB: changing directory to $qb"
+    if [$qb == '']; then
+        co_output "Querybuilder directory is not defined."
+    else
+        cd $qb
+        deploy $qb_repo
+    fi
 
+    description_text
     cd $src   
-    echo $line
-    echo "Finished context switch"
-    echo "SalesTeamAutomation :: $sta_repo"
-    echo "Querybuilder        :: $sta_repo"
-    echo "Atom                :: $sta_repo"
-    echo $line
+
 }
 
 # add other aliases with context $sta $qb $atom
