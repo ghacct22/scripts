@@ -1,0 +1,82 @@
+# paths
+sta='path/to/sta'
+atom='path/to/atom'
+qb='path/to/querybuilder'
+release='release/train/apr23'
+line='======================================================================================'
+
+# example branches
+cti='feature/mingle-17304-open-cti-ui'
+
+# git checkout command
+co(){
+    echo $line
+    echo "Checking out $1"
+    echo $line
+    git checkout $1
+
+    echo $line
+    echo "Running git pull"
+    echo $line
+    git pull
+
+    echo $line
+    echo "Running composer install"
+    echo $line
+    composer install
+
+    echo $line
+    echo "Running submodule update"
+    echo $line
+    git submodule update
+    git st
+}
+
+#deploy to sf
+deploy(){
+    co $1
+
+    echo $line
+    echo "Running ant sfDeploy"
+    echo $line
+    ant sfDeploy
+}
+
+# run them all
+context(){
+    src=`pwd`
+    sta_repo=$1
+    qb_repo=$2
+    atom_repo=$3
+
+    echo $line
+    echo "Starting context switch"
+    echo "SalesTeamAutomation :: $sta_repo"
+    echo "Querybuilder        :: $sta_repo"
+    echo "Atom                :: $sta_repo"
+    echo $line
+
+    cd $sta
+    co $sta_repo
+    
+    cd $atom
+    co $atom_repo
+
+    cd $qb
+    deploy $qb_repo
+
+    cd $src   
+    echo $line
+    echo "Finished context switch"
+    echo "SalesTeamAutomation :: $sta_repo"
+    echo "Querybuilder        :: $sta_repo"
+    echo "Atom                :: $sta_repo"
+    echo $line
+}
+
+# add other aliases with context $sta $qb $atom
+alias release='context $release $release $release'
+alias cti='context $cti $cti $release'
+
+# Other usefull commands
+alias grit='git branch -a | grep -i' # grit cti will list all branches with cti in the  name
