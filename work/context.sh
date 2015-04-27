@@ -78,6 +78,7 @@ context(){
         out_formatted "STA directory not defined"
     else
         cd $sta
+        echo `pwd`
         co $sta_repo
     fi
     
@@ -86,6 +87,7 @@ context(){
         out_formatted "Atom directory not defined"
     else
         cd $atom
+        echo `pwd`
         co $atom_repo
     fi
 
@@ -94,6 +96,7 @@ context(){
         out_formatted "Querybuilder directory is not defined."
     else
         cd $qb
+        echo `pwd`
         deploy $qb_repo
     fi
 
