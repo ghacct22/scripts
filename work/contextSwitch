@@ -39,7 +39,7 @@ deploy(){
     ant sfDeploy
 }
 
-co_output(){
+out_formatted(){
     echo $line
     echo "$1"
     echo $line
@@ -47,16 +47,16 @@ co_output(){
 
 # git checkout command
 co(){
-    co_output "Checking out $1"
+    out_formatted "Checking out $1"
     git checkout $1
 
-    co_output "Running git pull"
+    out_formatted "Running git pull"
     git pull
 
-    co_output "Running composer install"
+    out_formatted "Running composer install"
     composer install
 
-    co_output "Running submodule update"
+    out_formatted "Running submodule update"
     git submodule update
     git st
 }
@@ -65,7 +65,7 @@ co(){
 deploy(){
     co $1
 
-    co_output "Running ant sfDeploy"
+    out_formatted "Running ant sfDeploy"
     ant sfDeploy
 }
 
@@ -87,25 +87,25 @@ context(){
 
     description_text
 
-    co_output "STA: Changing directory to $sta"
+    out_formatted "STA: Changing directory to $sta"
     if [$sta == '']; then
-        co_output "STA directory not defined"
+        out_formatted "STA directory not defined"
     else
         cd $sta
         co $sta_repo
     fi
     
-    co_output "Atom: Changing directory to $atom"
+    out_formatted "Atom: Changing directory to $atom"
     if [$atom == '']; then
-        co_output "Atom directory not defined"
+        out_formatted "Atom directory not defined"
     else
         cd $atom
         co $atom_repo
     fi
 
-    co_output "QB: changing directory to $qb"
+    out_formatted "QB: changing directory to $qb"
     if [$qb == '']; then
-        co_output "Querybuilder directory is not defined."
+        out_formatted "Querybuilder directory is not defined."
     else
         cd $qb
         deploy $qb_repo
@@ -115,8 +115,21 @@ context(){
     cd $src   
 }
 
+release(){
+    if [$1 == '']; then
+        context $release $release $release
+    elif [$1 == 'apr23']; then
+        context $apr23 $apr23 $apr23
+    elif [$1 == 'may21']; then
+        context $may21 $may21 $may21
+    else
+        out_formatted "Not a recognized command: $1"
+    fi
+}
+
 # add other aliases with context $sta $qb $atom
 alias release='context $release $release $release'
+alias apr
 alias m14995='context $m14995 $release $release'
 alias cti='context $cti $cti $release'
 alias burp='context $burp $release $release'
