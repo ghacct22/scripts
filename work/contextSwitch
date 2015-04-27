@@ -1,8 +1,8 @@
 # paths
-sta='path/to/sta'
-atom='path/to/atom'
-qb='path/to/querybuilder'
-release='release/train/apr23'
+sta='~/insidesales/sta'
+atom=''
+qb='~/insidesales/qb/src'
+release='release/train/may21'
 line='======================================================================================'
 
 # example branches
@@ -57,12 +57,20 @@ context(){
     description_text
 
     co_output "STA: Changing directory to $sta"
-    cd $sta
-    co $sta_repo
+    if [$sta == '']; then
+        co_output "STA directory not defined"
+    else
+        cd $sta
+        co $sta_repo
+    fi
     
     co_output "Atom: Changing directory to $atom"
-    cd $atom
-    co $atom_repo
+    if [$atom == '']; then
+        co_output "Atom directory not defined"
+    else
+        cd $atom
+        co $atom_repo
+    fi
 
     co_output "QB: changing directory to $qb"
     if [$qb == '']; then
@@ -74,11 +82,11 @@ context(){
 
     description_text
     cd $src   
-
 }
 
 # add other aliases with context $sta $qb $atom
 alias release='context $release $release $release'
+alias m14995='context $m14995 $release $release'
 alias cti='context $cti $cti $release'
 
 # Other usefull commands
