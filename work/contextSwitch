@@ -1,12 +1,13 @@
 # paths
-sta='~/insidesales/sta'
-atom=''
-qb='~/insidesales/qb/src'
-release='release/train/may21'
+# sta='/home/stephen.smith/insidesales/sta'
+# atom=''
+# qb='/home/stephen.smith/insidesales/qb/src'
+# release='release/train/may21'
+# Config options moved to context.Config
+source ./context.config
 line='======================================================================================'
 
 # example branches
-cti='feature/mingle-17304-open-cti-ui'
 
 co_output(){
     echo $line
