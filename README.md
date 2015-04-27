@@ -7,5 +7,5 @@ Symlynk command: ln -s /full/path/to/file /full/path/to/targer
 Example:         ln -s ~/git/scripts/work/bashrc ~/.bashrc
 
 You will need to modify bashrc with the path to the directory though, so it can run everything else.
-`source $DIR/git/scripts/work/contextSwitch`
-Change after `$DIR` and before `scripts` for your path
+`source ~/git/scripts/work/scripts.sh`
+Change after `~` and before `scripts` for your path

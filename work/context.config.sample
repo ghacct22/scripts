@@ -1,6 +1,7 @@
 # This is a sample file to add your paths to
 # Copy this file to context.config
 # Change the values to your own paths and uncomment them
+# systemname='Work Laptop '
 # sta='/home/stephen.smith/insidesales/sta'
 # atom=''
 # qb='/home/stephen.smith/insidesales/qb/src'

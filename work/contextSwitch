@@ -4,11 +4,62 @@
 # qb='/home/stephen.smith/insidesales/qb/src'
 # release='release/train/may21'
 # Config options moved to context.Config
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-source $DIR/context.config
 line='======================================================================================'
+# some more ls aliases
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls -GFh'
+alias ll='ls -lhA'
+alias lsl='ls -lhFA | less'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias please='sudo '
+alias crap='$(thefuck $(fc -ln -1))'
 
-# example branches
+alias repache='apache2ctl restart'
+alias rebash='. ~/.bashrc'
+alias vibash='vim ~/.bashrc'
+alias vivim='vim ~/.vimrc'
+alias isdc='cd ~/insidesales/'
+alias querybuilder='cd ~/insidesales/qb/src'
+alias sslan='ssh root@stephensmith.lan'
+alias betternote='cd ~/git/betternote/'
+alias arcb='arc branch blah'
+alias arcblah='arc branch blah'
+alias blah='arc branch blah'
+alias diff='arc diff'
+alias land='arc land'
+alias add='sudo add-apt-repository '
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias install='sudo apt-get install'
+alias burp='cd ~/insidesales/sta/ && git co feature/Burp-XSS-fixing'
+alias xss='cd ~/insidesales/sta/ &&git co feature/Burp-XSS-fixing'
+alias prep='git submodule update && composer install'
+alias ant='prep && ant sfDeploy'
+alias grit='git branch -a | grep -i'
+alias pull='git pull'
+alias vitig='vim ~/.tigrc'
+
+# Branch names as vars
+xof='feature/mingle-7451-cross-object-filters'
+rbdl='feature/mingle-12595-report-based-domino'
+release='release/train/apr23'
+cti='feature/mingle-17304-open-cti-ui'
+
+# git checkout command
+co(){
+    git checkout $1
+    git pull
+    composer install
+    git submodule update
+    git st
+}
+
+deploy(){
+    co $1
+    ant sfDeploy
+}
 
 co_output(){
     echo $line
