@@ -1,7 +1,10 @@
 # This is a sample file to add your paths to
 # Copy this file to context.config
 # Change the values to your own paths and uncomment them
+
+# System
 # systemname='Work Laptop '
+# bash='path/to/.bashrc'
 
 # Paths
 # workDir='/home/stephen.smith/insidesales'

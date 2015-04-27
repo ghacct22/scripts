@@ -3,7 +3,7 @@
 # for examples
 
 
-source ~/git/scripts/scripts.sh
+source ~/scripts/scripts.sh
 
 # make less prettier
 # http://superuser.com/questions/117841/get-colors-in-less-command
@@ -36,7 +36,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
