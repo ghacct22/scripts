@@ -4,7 +4,8 @@
 # qb='/home/stephen.smith/insidesales/qb/src'
 # release='release/train/may21'
 # Config options moved to context.Config
-source ./context.config
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $DIR/context.config
 line='======================================================================================'
 
 # example branches
