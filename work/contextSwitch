@@ -25,20 +25,6 @@ alias grit='git branch -a | grep -i'
 alias pull='git pull'
 alias vitig='vim ~/.tigrc'
 
-# git checkout command
-co(){
-    git checkout $1
-    git pull
-    composer install
-    git submodule update
-    git st
-}
-
-deploy(){
-    co $1
-    ant sfDeploy
-}
-
 out_formatted(){
     echo $line
     echo "$1"
@@ -115,21 +101,10 @@ context(){
     cd $src   
 }
 
-release(){
-    if [$1 == '']; then
-        context $release $release $release
-    elif [$1 == 'apr23']; then
-        context $apr23 $apr23 $apr23
-    elif [$1 == 'may21']; then
-        context $may21 $may21 $may21
-    else
-        out_formatted "Not a recognized command: $1"
-    fi
-}
-
 # add other aliases with context $sta $qb $atom
 alias release='context $release $release $release'
-alias apr
+alias apr23='context $apr23 $apr23 $apr23'
+alias may21='context $may21 $may21 $may21'
 alias m14995='context $m14995 $release $release'
 alias cti='context $cti $cti $release'
 alias burp='context $burp $release $release'
