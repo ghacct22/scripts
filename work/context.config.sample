@@ -2,7 +2,12 @@
 # Copy this file to context.config
 # Change the values to your own paths and uncomment them
 # systemname='Work Laptop '
-# sta='/home/stephen.smith/insidesales/sta'
+
+# Paths
+# workDir='/home/stephen.smith/insidesales'
+# sta='$workDir/sta'
 # atom=''
-# qb='/home/stephen.smith/insidesales/qb/src'
+# qb='$workDir/qb/src'
+
+# Branches
 # release='release/train/may21'

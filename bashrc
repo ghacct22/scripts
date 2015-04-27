@@ -3,7 +3,12 @@
 # for examples
 
 
-source ~/git/scripts/work/scripts.sh
+source ~/git/scripts/scripts.sh
+
+# make less prettier
+# http://superuser.com/questions/117841/get-colors-in-less-command
+export LESS=' -R'
+export LESSOPEN='|~/.lessfilter %s'
 
 # If not running interactively, don't do anything
 case $- in
