@@ -20,7 +20,7 @@ alias land='arc land'
 alias add='sudo add-apt-repository '
 
 alias prep='git submodule update && composer install'
-alias ant='prep && ant sfDeploy'
+alias ant='cd $qb && prep && ant sfDeploy'
 alias grit='git branch -a | grep -i'
 alias pull='git pull'
 alias vitig='vim ~/.tigrc'

@@ -3,7 +3,7 @@
 # for examples
 
 
-source ~/scripts/scripts.sh
+source ~/git/scripts/scripts.sh
 
 # make less prettier
 # http://superuser.com/questions/117841/get-colors-in-less-command
