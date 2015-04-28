@@ -106,7 +106,7 @@ context(){
 
 # add other aliases with context $sta $qb $atom
 alias release='context $release $release $release'
-alias apr23='context $apr23 $apr23 $apr23'
+alias apr23="context $apr23 $apr23 $apr23"
 alias may21='context $may21 $may21 $may21'
 alias m14995='context $m14995 $release $release'
 alias cti='context $cti $cti $release'
