@@ -11,3 +11,10 @@ You will need to modify bashrc with the path to the directory though, so it can 
 Change after `~` and before `scripts` for your path
 
 In scripts/scripts.sh, comment out which ones you don't want loaded.
+
+## Changelog
+### 5.6.2015 
+- Added a changelog
+- Moved features into different files
+- added fuzzy file search for git branches in the grit command
+- added switchAll commands, based on grit

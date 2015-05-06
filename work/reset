@@ -1,53 +1,55 @@
-# constants
-Start=`pwd`
-STA=/var/www/sta
-Atom=/var/www/atom
-#Composer='php /usr/local/bin/composer'
-Composer='composer'
-domain=stephensmith.lan
+if [$sta == '' && $atom == '']; then
+    out_formatted "Directories not defined"
+else
+    # constants
+    Start=`pwd`
+    #Composer='php /usr/local/bin/composer'
+    Composer='composer'
+    domain=stephensmith.lan
 
-# reset permissions
-chmod 777 $STA/templates_c -R
-chmod 777 $Atom/templates_c -R
+    # reset permissions
+    chmod 777 $sta/templates_c -R
+    chmod 777 $atom/templates_c -R
 
-# Clear templates folder
-rm -rf $STA/templates_c/*
-rm -rf $Atom/templates_c/*
+    # Clear templates folder
+    rm -rf $sta/templates_c/*
+    rm -rf $atom/templates_c/*
 
-# composer
-cd $STA
-git pull
-git submodule update
-$Composer install
-cd nexus_library
-git co master
-git pull
-cd ..
+    # composer
+    cd $sta
+    git pull
+    git submodule update
+    $Composer install
+    cd nexus_library
+    git co master
+    git pull
+    cd ..
 
-cd $Atom
-git pull
-git submodule update
-$Composer install
-cd nexus_library
-git co master
-git pull
-cd ..
+    cd $atom
+    git pull
+    git submodule update
+    $Composer install
+    cd nexus_library
+    git co master
+    git pull
+    cd ..
 
-# nexus domain
-cd $STA/ext/is/nexusdomain
-git pull
-php migrate.php -dall
+    # nexus domain
+    cd $sta/ext/is/nexusdomain
+    git pull
+    php migrate.php -dall
 
-# db
-cd $STA/db
-chmod +x run_next_release_updates.php
-./run_next_release_updates.php $domain -a
-AtomDBVersion=`ls $Atom/db | grep v | set s/v// | sort -n | tail -n1`
+    # db
+    cd $sta/db
+    chmod +x run_next_release_updates.php
+    ./run_next_release_updates.php $domain -a
+    AtomDBVersion=`ls $atom/db | grep v | set s/v// | sort -n | tail -n1`
 
-cd $Atom
-php update_db.php $domain
+    cd $atom
+    php update_db.php $domain
 
-# Restart apache
-apache2ctl restart
-# back to start
-cd $Start
+    # Restart apache
+    apache2ctl restart
+    # back to start
+    cd $Start
+fi
