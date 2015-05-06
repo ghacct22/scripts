@@ -113,6 +113,9 @@ alias cti='context $cti $cti $release'
 alias burp='context $burp $release $release'
 
 # requires fzf be installed
+# https://github.com/junegunn/fzf
+# https://coderwall.com/p/ba8afa/git-branch-fuzzy-search-checkout
+# @TODO: integrate fbr into the context function for simplicity
 fbr() {
     local branches branch
     branches=$(git branch -a) &&
