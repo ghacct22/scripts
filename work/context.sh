@@ -122,4 +122,4 @@ fbr() {
     branch=$(echo "$branches" | fzf +s +m -e) &&
     git checkout $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
 }
-alias grit='fbr && prep && ant sfDeploy' # grit will start an interactive grep on all branches
+alias grit='git fetch --all && fbr && prep && ant sfDeploy' # grit will start an interactive grep on all branches
