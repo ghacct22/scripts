@@ -20,7 +20,7 @@ alias land='arc land'
 alias add='sudo add-apt-repository '
 
 alias prep='git submodule update && composer install'
-alias ant='cd $qb && prep && ant sfDeploy'
+alias qbant='cd $qb && ant sfDeploy'
 alias grit='git branch -a | grep -i'
 alias pull='git pull'
 alias vitig='vim ~/.tigrc'
@@ -112,5 +112,11 @@ alias m14995='context $m14995 $release $release'
 alias cti='context $cti $cti $release'
 alias burp='context $burp $release $release'
 
-# Other usefull commands
-alias grit='git branch -a | grep -i' # grit cti will list all branches with cti in the  name
+# requires fzf be installed
+fbr() {
+    local branches branch
+    branches=$(git branch -a) &&
+    branch=$(echo "$branches" | fzf +s +m -e) &&
+    git checkout $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
+}
+alias grit='fbr && prep && ant sfDeploy' # grit will start an interactive grep on all branches

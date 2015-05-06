@@ -228,3 +228,4 @@ else \
 fi)'
 
 PATH="$HOME/git/arcanist/bin/:$PATH"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
