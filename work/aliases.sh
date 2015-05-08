@@ -1,6 +1,6 @@
 alias repache='apache2ctl restart'
 alias rebash='. $bash'
-alias vibash='vim ~/.bashrc'
+alias vibash='vim $bash'
 alias vivim='vim ~/.vimrc'
 alias isdc='cd $workDir'
 alias querybuilder='cd $workDir/qb/src'
