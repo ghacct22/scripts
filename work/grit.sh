@@ -15,4 +15,5 @@ switchAll() {
     context $branch $branch $branch
 }
 
-alias grit='git fetch --all && switch && prep && ant sfDeploy' # grit will start an interactive grep on all branches
+alias grit='switch && prep && ant sfDeploy' # grit will start an interactive grep on all branches
+alias gritf='git fetch --all && switch && prep && ant sfDeploy' # grit will start an interactive grep on all branches
