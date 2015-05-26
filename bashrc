@@ -5,6 +5,11 @@
 
 source ~/git/scripts/scripts.sh
 
+
+#git-bash-prompt
+# source ~/.bash-git-prompt/gitprompt.sh
+# Not displaying correctly, prefer old one
+
 # make less prettier
 # http://superuser.com/questions/117841/get-colors-in-less-command
 export LESS=' -R'

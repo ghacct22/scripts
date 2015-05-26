@@ -11,7 +11,7 @@
 #   Switches to selected branch
 #
 ###############################################################################
-switch() {
+fuzzy_switch() {
     local branches branch
     branches=$(git branch -a) &&
     branch=$(echo "$branches" | fzf +s +m -e) &&
@@ -23,7 +23,7 @@ switch() {
 #   Runs Context on selected branch on all defined repos
 #
 ###############################################################################
-switchAll() {
+fuzzy_switch_all() {
     local branches branch
     branches=$(git branch -a) &&
     branch=$(echo "$branches" | fzf +s +m -e) &&
@@ -64,7 +64,7 @@ fuzzy_show_commit() {
 #   Searches through all files and files in subdirectories and opens it in vim
 #
 ###############################################################################
-fzf_file() {
+fuzzy_file() {
     local file
     file=$(fzf --query="$1" --select-1 --exit-0)
     [ -n "$file" ] && ${EDITOR:-vim} "$file"
@@ -123,7 +123,7 @@ fuzzy_cd_root_all() {
 #   cd into the directory of the selected file
 #
 ###############################################################################
-cd_to_file() {
+fuzzy_cd_to_file() {
    local file
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
@@ -143,8 +143,8 @@ write_to_cmd() {
 #   lists the command history of the shell
 #
 ###############################################################################
-command_history() {
-  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd -run
+fuzzy_command_history() {
+  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | write_to_cmd -run
 }
 
 ###############################################################################
@@ -152,8 +152,8 @@ command_history() {
 #   Lists the command history of the shell but allow the command to be edited
 #
 ###############################################################################
-command_history_editable() {
-  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | writecmd
+fuzzy_command_history_editable() {
+  ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -re 's/^\s*[0-9]+\s*//' | write_to_cmd
 }
 
 ###############################################################################
@@ -174,17 +174,19 @@ fuzzy_kill_process() {
 # Aliases for several commands, also implements the grit name
 ###############################################################################
 # grit will start an interactive grep on all branches
-alias grit='switch && prep && ant sfDeploy'
+alias grit='fuzzy_switch && prep && ant sfDeploy'
 
 # grit will start an interactive grep on all branches
-alias gritf='git fetch --all && switch && prep && ant sfDeploy'
+alias gritf='git fetch --all && fuzzy_switch && prep && ant sfDeploy'
 
 # shorter versions for fuzzy searches
-alias fe='fzf_file'
+alias fe='fuzzy_file'
 alias fd='fuzzy_cd'
 alias fda='fuzzy_cd_all'
 alias fdr='fuzzy_cd_root'
 alias fdra='fuzzy_cd_root_all'
-alias cdf='cd_to_file'
-alias ch='command_history_editable'
+alias cdf='fuzzy_cd_to_file'
+alias ch='fuzzy_command_history_editable'
 alias fkill='fuzzy_kill_process'
+alias switch='fuzzy_switch'
+alias switchall='fuzzy_switch_all'

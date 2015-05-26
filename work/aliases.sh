@@ -11,7 +11,7 @@ alias diff='arc diff'
 alias land='arc land'
 alias add='sudo add-apt-repository '
 
-alias prep='git submodule update && composer install'
+alias prep='git pull && git submodule update && composer install'
 alias qbant='cd $qb && ant sfDeploy'
 alias pull='git pull'
 alias vitig='vim ~/.tigrc'
