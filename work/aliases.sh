@@ -7,7 +7,6 @@ alias querybuilder='cd $workDir/qb/src'
 alias sslan='ssh root@stephensmith.lan'
 alias arcbranch='arc branch blah'
 alias blah='arc branch blah'
-alias diff='arc diff'
 alias land='arc land'
 alias add='sudo add-apt-repository '
 
