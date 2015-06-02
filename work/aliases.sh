@@ -14,6 +14,7 @@ alias prep='git pull && git submodule update && composer install'
 alias qbant='cd $qb && ant sfDeploy'
 alias pull='git pull'
 alias vitig='vim ~/.tigrc'
+alias phplog='less +F /var/log/apache2/php_error.log'
 
 # add other aliases with context $sta $qb $atom
 # Since the creation of the grit command, these are mostly superfluous
