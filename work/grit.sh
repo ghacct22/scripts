@@ -72,7 +72,7 @@ fuzzy_file() {
 
 ###############################################################################
 #
-#   Searches through all files and files in subdirectories and opens it in vim
+#   Searches through all files and files in subdirectories and opens it in atom
 #
 ###############################################################################
 fuzzy_atom() {
@@ -91,6 +91,50 @@ fuzzy_cd() {
   dir=$(find ${1:-*} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
+}
+
+###############################################################################
+#
+#   Fuzzy search from git toplevel
+#
+###############################################################################
+fuzzy_git_cd() {
+  local top=`git rev-parse --show-toplevel`
+  cd $top
+  fuzzy_cd
+}
+
+###############################################################################
+#
+#   Fuzzy search from git toplevel
+#
+###############################################################################
+fuzzy_git_cd_file() {
+    local top=`git rev-parse --show-toplevel`
+    cd $top
+    fuzzy_cd_to_file
+}
+
+###############################################################################
+#
+#   Fuzzy open from git toplevel
+#
+###############################################################################
+fuzzy_git_file() {
+    local top=`git rev-parse --show-toplevel`
+    cd $top
+    fuzzy_file
+}
+
+###############################################################################
+#
+#   Fuzzy atom open from git toplevel
+#
+###############################################################################
+fuzzy_git_file_atom() {
+    local top=`git rev-parse --show-toplevel`
+    cd $top
+    fuzzy_atom
 }
 
 ###############################################################################
@@ -180,25 +224,3 @@ fuzzy_kill_process() {
     kill -${1:-9} $pid
   fi
 }
-
-###############################################################################
-# Aliases for several commands, also implements the grit name
-###############################################################################
-# grit will start an interactive grep on all branches
-alias grit='fuzzy_switch && prep && ant sfDeploy'
-
-# grit will start an interactive grep on all branches
-alias gritf='git fetch --all && fuzzy_switch && prep && ant sfDeploy'
-
-# shorter versions for fuzzy searches
-alias ff='fuzzy_file'
-alias fd='fuzzy_cd'
-alias fda='fuzzy_cd_all'
-alias fdr='fuzzy_cd_root'
-alias fdra='fuzzy_cd_root_all'
-alias cdf='fuzzy_cd_to_file'
-alias ch='fuzzy_command_history_editable'
-alias fkill='fuzzy_kill_process'
-alias switch='fuzzy_switch'
-alias switchall='fuzzy_switch_all'
-alias fatom='fuzzy_atom'

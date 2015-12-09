@@ -4,3 +4,4 @@ source $DIR/context.config
 source $DIR/context.sh
 source $DIR/aliases.sh
 source $DIR/grit.sh
+source $DIR/gritAlias.sh
