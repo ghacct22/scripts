@@ -1,7 +1,7 @@
 # requires fzf be installed
 # https://github.com/junegunn/fzf
 # https://coderwall.com/p/ba8afa/git-branch-fuzzy-search-checkout
-# 
+#
 # Basically this file is all about adding fzf functionality to command line
 # Tried to make the function names descriptive and the aliases short, so that
 # the functions can be tab completed to see what you want.
@@ -72,6 +72,17 @@ fuzzy_file() {
 
 ###############################################################################
 #
+#   Searches through all files and files in subdirectories and opens it in vim
+#
+###############################################################################
+fuzzy_atom() {
+    local file
+    file=$(fzf --query="$1" --select-1 --exit-0)
+    [ -n "$file" ] && atom "$file"
+}
+
+###############################################################################
+#
 #   Lists and changes to a directory in the current or sub directory
 #
 ###############################################################################
@@ -89,7 +100,7 @@ fuzzy_cd() {
 ###############################################################################
 fuzzy_cd_all() {
   local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && 
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
@@ -114,7 +125,7 @@ fuzzy_cd_root() {
 fuzzy_cd_root_all() {
   local dir
   cd
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && 
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
@@ -190,3 +201,4 @@ alias ch='fuzzy_command_history_editable'
 alias fkill='fuzzy_kill_process'
 alias switch='fuzzy_switch'
 alias switchall='fuzzy_switch_all'
+alias fatom='fuzzy_atom'
