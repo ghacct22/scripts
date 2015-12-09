@@ -2,6 +2,16 @@
 
 currentpath=`pwd`
 systemOS=$1
+if [ "$1" == "-h" ] || [ "$1" == "help"]; then
+    echo "Usage:"
+    echo "  sh autoLink.sh <OS>"
+    echo "    Accepted values: mac/win/linux"
+    echo ""
+    echo "  sh autoLink.sh -h"
+    echo "  sh autolink.sh help"
+    echo "    Bring up this help menu"
+    exit
+fi
 
 if [ "$systemOS" == "mac" ]; then 
     echo "You are running on OSX"
