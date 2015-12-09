@@ -13,6 +13,11 @@ Change after `~` and before `scripts` for your path
 In scripts/scripts.sh, comment out which ones you don't want loaded.
 
 ## Changelog
+### 12.9.2015
+- Added git-prompt.sh
+- Added git-completion.sh
+- Added autoLink.sh to automatically create symlinks
+- MF changes to bashrc
 ### 5.6.2015 
 - Added a changelog
 - Moved features into different files
