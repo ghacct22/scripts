@@ -1,0 +1,131 @@
+<?php
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Domain Settings
+//
+//  This array defines the different paths, databases, etc for each
+//  different site within the domain specified by the filename.
+//
+//  Create a new file for each domain (each dev's own box).
+//
+//  Each domain must specify at least:
+//
+//  Admin/shared database host, which contains databases:
+//
+//  - crm_admin
+//  - crm_shared (replication master--read/write)
+//
+//  Company database host, which contains databases:
+//
+//  - crm_<company>
+//  - crm_shared (replication slave--readonly)
+//
+//  These may be the same, but there will nevertheless be two db objects
+//  created and used throughout the code anyways so that they may be
+//  different in some domains.
+//
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Each company (SITE) must have an entry in $settings['db']
+//
+//////////////////////////////////////////////////////////////////////////////
+$settings['db']['admin'] = array('hostname' => 'stephensmith.lan',
+				  'username' => 'root',
+				  'password' => 'd3v3nv',
+				  'database' => 'sta_dev_admin');
+
+$settings['db']['shared'] = array('hostname' => 'stephensmith.lan',
+				  'username' => 'root',
+				  'password' => 'd3v3nv',
+				  'database' => 'sta_dev_shared');
+$settings['db']['log'] = array(
+				'hostname' => $settings['db']['shared']['hostname'],
+				'database' => 'sta_dev_logs',
+				'username' => $settings['db']['shared']['username'],
+				'password' => $settings['db']['shared']['password']
+);
+
+$settings['db']['worker'] = $settings['db']['shared'];
+$settings['db']['worker']['database'] = 'sta_dev_worker';
+
+$settings['mysql_charset'] = 'latin1';
+$settings['db_cookie_prefix'] = 'InsideSales_';
+$settings['wsdl_encoding'] = 'ISO-8859-1';
+
+$settings['intermediate_domains'] = "sjs.dev";
+
+$settings['salesforce_sforce']                  = 'sforce.sjs.dev.insidesales.com';
+$settings['salesforce_namespace']               = 'sjs8'; //Change to qbdial<initals>
+$settings['salesforce_developer_edition']       = 'Enterprise';
+$settings['salesforce_consumer_key']            = '3MVG9fMtCkV6eLhfi3JIbPcjZlbhM2wgyChzELdI9nd9QyDGtFAGxN7AbWAZJlGHzOs3Bjm42qJRfshUwVZUp';
+$settings['salesforce_consumer_secret']         = '8858396376113511092';
+
+
+//Allow multiple/secondary Dev SalesForce organization to be authorized
+/* Uncommnet to allow extra companies that use a different namespace
+$site_subdomain = SITE;
+if (SITE == 'sforce') {
+    //Need sf subdomain for oauth to work for multiple sf dev companies
+    $site_subdomain = substr($_COOKIE['InsideSales_db'], strlen('sta_dev_'));
+}
+if ($site_subdomain == 'OTHER_SF_COMPANY_NAME') {
+    $settings['salesforce_namespace']               = 'qbdialer'; //Change to qbdial<initals>
+    $settings['salesforce_consumer_key']            = 'ENTER_YOUR_SALESFORCE_CONSUMER_KEY';
+    $settings['salesforce_consumer_secret']         = 'ENTER_YOUR_SALESFORCE_CONSUMER_SECRET;
+}
+*/
+
+//$settings['dialer']['use_ajax_save'] = true;
+$smartySettings['caching']=false;
+$templates['login'] = 'employee_login';
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Optionally override the default 'action not found' view:
+//
+//////////////////////////////////////////////////////////////////////////////
+//$view = '/some other action not found view';
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Settings for Memcache
+//
+//////////////////////////////////////////////////////////////////////////////
+$settings['memcache']['hosts'] = array("127.0.0.1");
+$settings['memcache']['port'] = '11211';
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Control individual debug points here.
+//
+//////////////////////////////////////////////////////////////////////////////
+$debug = array(
+        'purge',
+                 //'view.php',
+                 //'dispatch',
+                 //'login.view',
+                 //'phpinfo',
+                 //'smarty',
+                 'session',
+                 //'debug',
+                 //'viewnotfound',
+                 // 'action.php', // gives all variables posted and kills redirect
+                 //'action dispatch'
+                 //'actionnotfound'
+                 'sql',
+                 //'no session timeout',
+                 'sql errors'
+                );
+$debugMessage = 'debugMessageFile';
+
+//  debugMessageHTML()       - the default, converts text -> html
+//  debugMessagePrettyHTML() - renders plaintext $msg into Formatted HTML
+//  debugMessageText()       - no conversion
+//  debugMessageFile()
+$debugFile = '/var/log/stephensmith_local.log';
+$debugEmailAddress = 'stephen.smith@insidesales.com';
+$notProduction = true;
+
+$settings['recording_server'] = 'http://dialer.stephensmith.lan';

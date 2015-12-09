@@ -14,6 +14,7 @@ out_formatted(){
 
 # git checkout command
 co(){
+    git fetch --all
     out_formatted "Checking out $1"
     git checkout $1
 
