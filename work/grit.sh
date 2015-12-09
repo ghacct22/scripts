@@ -180,7 +180,7 @@ alias grit='fuzzy_switch && prep && ant sfDeploy'
 alias gritf='git fetch --all && fuzzy_switch && prep && ant sfDeploy'
 
 # shorter versions for fuzzy searches
-alias fe='fuzzy_file'
+alias ff='fuzzy_file'
 alias fd='fuzzy_cd'
 alias fda='fuzzy_cd_all'
 alias fdr='fuzzy_cd_root'
