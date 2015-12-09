@@ -3,7 +3,7 @@
 # for examples
 
 
-source ~/git/scripts/scripts.sh
+source ~/dev/work/git/scripts/scripts.sh
 
 
 #git-bash-prompt
@@ -97,7 +97,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/bin/subl"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -232,16 +232,7 @@ else \
   echo " '$Yellow$PathShort$Color_Off'\$ "; \
 fi)'
 
-PATH="$HOME/git/arcanist/bin/:$PATH"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export M2_HOME=~/apache-maven-3.3.3
-export M2=$M2_HOME/bin
-export PATH=$M2:$PATH
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
-export PWM_APPLICATIONPATH='/Users/TaskA/microfocus/pwm-data'
-
-export PATH=/Users/TaskA/npm/bin/:$PATH
 
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
