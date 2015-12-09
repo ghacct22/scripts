@@ -237,3 +237,5 @@ fi)'
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+# Put Additional things that should go in the bash rc into context.config instead, since that is not under versino control
