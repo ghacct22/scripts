@@ -1,5 +1,6 @@
 #~/bin/bash
-
+# Only use this is you want to replace your bashrc/profile, its easier to
+# source the bashrc in the scripts dir.
 currentpath=`pwd`
 systemOS=$1
 if [ "$1" == "-h" ] || [ "$1" == "help"]; then
@@ -13,7 +14,7 @@ if [ "$1" == "-h" ] || [ "$1" == "help"]; then
     exit
 fi
 
-if [ "$systemOS" == "mac" ]; then 
+if [ "$systemOS" == "mac" ]; then
     echo "You are running on OSX"
     if [ -f ~/.bash_profile ]; then
         mv ~/.bash_profile ~/.bash_profile.old

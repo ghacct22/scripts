@@ -2,8 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+scriptsDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-source ~/dev/work/git/scripts/scripts.sh
+source $scriptsDir/scripts.sh
 
 
 #git-bash-prompt

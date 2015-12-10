@@ -1,4 +1,3 @@
-scriptsDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # work Scripts
 source $scriptsDir/work/scripts.sh
