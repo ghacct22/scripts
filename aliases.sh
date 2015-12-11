@@ -20,7 +20,3 @@ alias status='git status'
 alias branches='git branch -va'
 alias vitig='vim ~/.tigrc'
 alias crap='$(thefuck $(fc -ln -1))' # A bash autocorrect utility, i didn't name it
-alias generalAliases="cat $scriptsDir/aliases.sh"
-alias workAliases="cat $scriptsDir/work/aliases.sh"
-alias gritAliases="cat $scriptsDir/work/gritAlias.sh"
-alias aliases="generalAliases && gritAliases"
