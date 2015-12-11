@@ -7,7 +7,15 @@ Copy context.config.sample to context.config and fill out the first two params (
 
 In scripts/scripts.sh, comment out which ones you don't want loaded.
 
+The Git-Extras add a lot of useful git commands to speed up your work, you can look them over [here](https://github.com/tj/git-extras)
+It is easy to install, on mac it's as simple as `brew install git-extras`, but you can look at the installation instructions if you are using something else.
+I highly reccomend installing this.
+
 ## Changelog
+### 12.11.2015
+- Stopped replacing the ~/.bashrc, since that is bad practice (really bad)
+- Added my .tigrc, as an example
+- Added a reference in the README to git-extras, which are awesome
 ### 12.9.2015
 - Added git-prompt.sh
 - Added git-completion.sh
