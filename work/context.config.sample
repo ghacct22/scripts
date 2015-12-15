@@ -3,7 +3,7 @@
 # Change the values to your own paths and uncomment them
 
 # System
-# systemname='Work Laptop '
+# SYSTEMNAME='Work Laptop '
 # bash='path/to/.bashrc'
 
 # Paths

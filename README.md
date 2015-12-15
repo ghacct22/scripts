@@ -3,7 +3,7 @@ Scripts i want to maintain
 
 Source scripts/bashrc in your .bashrc/.bash_profile to load it.
 
-Copy context.config.sample to context.config and fill out the first two params (systemname and bash)
+Copy context.config.sample to context.config and fill out the first two params (SYSTEMNAME and bash)
 
 In scripts/scripts.sh, comment out which ones you don't want loaded.
 
