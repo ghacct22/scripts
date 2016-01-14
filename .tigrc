@@ -1,5 +1,5 @@
-set split-view-width = 75%
-set split-view-height = 75%
+set split-view-width = 60%
+set split-view-height = 60%
 
 # Extra commands
 bind generic 9 !@sh -c "echo -n %(commit) | xclip -selection c"
