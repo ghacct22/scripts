@@ -62,7 +62,6 @@ $settings['salesforce_developer_edition']       = 'Enterprise';
 $settings['salesforce_consumer_key']            = '3MVG9fMtCkV6eLhfi3JIbPcjZlbhM2wgyChzELdI9nd9QyDGtFAGxN7AbWAZJlGHzOs3Bjm42qJRfshUwVZUp';
 $settings['salesforce_consumer_secret']         = '8858396376113511092';
 
-
 //Allow multiple/secondary Dev SalesForce organization to be authorized
 /* Uncommnet to allow extra companies that use a different namespace
 $site_subdomain = SITE;

@@ -6,7 +6,6 @@ scriptsDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $scriptsDir/scripts.sh
 
-
 #git-bash-prompt
 # source ~/.bash-git-prompt/gitprompt.sh
 # Not displaying correctly, prefer old one

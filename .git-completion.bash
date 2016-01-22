@@ -289,7 +289,6 @@ __git_ls_files_helper ()
 	fi 2>/dev/null
 }
 
-
 # __git_index_files accepts 1 or 2 arguments:
 # 1: Options to pass to ls-files (required).
 # 2: A directory path (optional).
@@ -498,7 +497,6 @@ __git_complete_revlist_file ()
 		;;
 	esac
 }
-
 
 # __git_complete_index_file requires 1 argument:
 # 1: the options to pass to ls-file
