@@ -20,7 +20,5 @@ alias status='git status'
 alias branches='git branch -va'
 alias vitig='vim ~/.tigrc'
 alias crap='$(thefuck $(fc -ln -1))' # A bash autocorrect utility, i didn't name it
-
-
 alias maven='mvn clean compile assembly:single'
 alias jarup='cd target && scp -rpC IAAMAuto-1.0SNAPSHOT-jar-with-dependencies.jar root@10.204.130.109:/srv/ftp/auto/auto-sspr-4.0.0.jar'
