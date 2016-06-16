@@ -224,3 +224,15 @@ fuzzy_kill_process() {
     kill -${1:-9} $pid
   fi
 }
+
+###############################################################################
+#
+#   Lists changed files from git status to stage
+#
+###############################################################################
+fuzzy_git_add() {
+  local changes file
+  changes=$(git diff --name-only) &&
+  file=$(echo "$changes" | fzf --tac +s +m -e) &&
+  git add $(echo "$file")
+}
