@@ -241,5 +241,5 @@ fuzzy_git_unstage() {
     local changes file
     changes=$(git diff --cached --name-only) &&
     file=$(echo "$changes" | fzf --tac +s +m -e) &&
-    git unstage $(echo "$file")
+    git reset HEAD -- $(echo "$file")
 }
