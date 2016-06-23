@@ -231,14 +231,18 @@ fuzzy_kill_process() {
 #
 ###############################################################################
 fuzzy_git_add() {
-  local changes file
+  local changes file top
+  top=`git rev-parse --show-toplevel`
+  cd $top
   changes=$(git diff --name-only) &&
   file=$(echo "$changes" | fzf --tac +s +m -e) &&
   git add $(echo "$file")
 }
 
 fuzzy_git_unstage() {
-    local changes file
+    local changes file top
+    top=`git rev-parse --show-toplevel`
+    cd $top
     changes=$(git diff --cached --name-only) &&
     file=$(echo "$changes" | fzf --tac +s +m -e) &&
     git reset HEAD -- $(echo "$file")
