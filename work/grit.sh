@@ -247,3 +247,12 @@ fuzzy_git_unstage() {
     file=$(echo "$changes" | fzf --tac +s +m -e) &&
     git reset HEAD -- $(echo "$file")
 }
+
+fuzzy_git_reset_file() {
+    local changes file top
+    top=`git rev-parse --show-toplevel`
+    cd $top
+    changes=$(git diff --name-only) &&
+    file=$(echo "$changes" | fzf --tac +s +m -e) &&
+    git co -- $(echo "$file")
+}
